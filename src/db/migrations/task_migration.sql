@@ -1,0 +1,9 @@
+CREATE TABLE tasks(
+	id SERIAL UNIQUE,
+	user_id INTEGER NOT NULL,
+	title VARCHAR(255) NOT NULL,
+	subtitle VARCHAR(100),
+	description VARCHAR(255),
+	completed BOOLEAN NOT NULL DEFAULT FALSE,
+	FOREIGN KEY (user_id) REFERENCES users(id)
+);
