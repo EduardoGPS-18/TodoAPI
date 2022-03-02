@@ -1,5 +1,6 @@
 const express = require('express');
 const dotenv = require('dotenv');
+const cors = require('cors');
 dotenv.config();
 
 const PGConnection = require('./db/connection/connection');
@@ -9,6 +10,7 @@ const setTaskRoutes = require('./routes/tasksRoutes');
 const app = express();
 
 app.use(express.json());
+app.use(cors());
 app.use((_req, res, next) => {
     res.setHeader('Content-Type', 'application/json');
     next();
