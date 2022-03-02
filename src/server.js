@@ -19,8 +19,7 @@ app.use((_req, res, next) => {
 setUserRoutes(app);
 setTaskRoutes(app);
 
-const port = process.env.PORT || 3000;
-app.listen(port, () => {
-    console.log(`Server rodando na porta ${port}`);
-    PGConnection.connect().then(() => console.log('Conectado ao banco!'));
+PGConnection.connect().then(() => {
+    const port = process.env.PORT || 3000;
+    app.listen(port, () => console.log(`Server rodando na porta ${port}`));
 });
