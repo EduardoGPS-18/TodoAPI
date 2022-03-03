@@ -1,5 +1,6 @@
 const { client, salts } = require("../../db/connection/connection");
 const { ModelErrorsFactory } = require('../errors/errors');
+const { daysFromMilliseconds } = require('../helpers/getDaysFromMilliseconds');
 
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
@@ -37,7 +38,7 @@ module.exports = {
     },
     
     async updateTokenInDatabase({email}) {
-        const daysFromMilliseconds = days => days * 24 * 60 * 60 * 1000;    
+        
         const iat = new Date().getTime() + daysFromMilliseconds(7);
         const token = jwt.sign({email, iat}, jwtSecret);
 

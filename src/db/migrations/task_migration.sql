@@ -1,6 +1,7 @@
 CREATE TABLE tasks(
 	id SERIAL UNIQUE,
 	user_id INTEGER NOT NULL,
+	end_date TIMESTAMP NOT NULL,
 	title VARCHAR(255) NOT NULL,
 	subtitle VARCHAR(100),
 	description VARCHAR(255),

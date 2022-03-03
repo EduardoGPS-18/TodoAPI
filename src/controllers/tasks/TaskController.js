@@ -9,10 +9,11 @@ module.exports = {
     async handleCreateTask(createTaskParams) {
         try{
             ContainsKeyInObjectOrThrow(createTaskParams, ['title']);
-            const { user, title, subtitle, description, completed } = createTaskParams;
+            const { user, title, subtitle, description, completed, end_date } = createTaskParams;
             
             const task = await TaskModel.createTask({
                 title,
+                endDate: end_date,
                 completed,
                 subtitle,
                 description,
@@ -83,10 +84,11 @@ module.exports = {
         try{
             ContainsKeyInObjectOrThrow(updateTaskByIDParams, ['task_id']);
             const { user, task_id } = updateTaskByIDParams;
-            const { title, subtitle, description, completed } = updateTaskByIDParams;
+            const { title, subtitle, end_date, description, completed } = updateTaskByIDParams;
             const task = await TaskModel.updateTask({
                 userID: user.id,
                 taskID: task_id,
+                endDate: end_date,
                 title, subtitle, description, completed
             });
             return TaskView(task);
