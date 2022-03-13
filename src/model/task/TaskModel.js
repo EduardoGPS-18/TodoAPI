@@ -48,8 +48,8 @@ module.exports = {
             userID,
             taskID
         ];        
-        const updatedTask = (await client.query(sql, queryValues)).rows[0];
-        return updatedTask;
+        const tasks = this.getTaskByUserId({userID})
+        return tasks;
     },
 
     async getTaskById({userID, taskID}){
