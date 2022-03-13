@@ -47,7 +47,8 @@ module.exports = {
             endDate ?? task.end_date,
             userID,
             taskID
-        ];        
+        ];
+        client.query(sql, queryValues)
         const tasks = await this.getTaskByUserId({userID})
         return tasks;
     },

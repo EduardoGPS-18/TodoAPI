@@ -91,7 +91,7 @@ module.exports = {
                 endDate: end_date,
                 title, subtitle, description, completed
             });
-            return tasks.tasks((task) => TaskView(task));
+            return tasks.tasks.map((task) => TaskView(task));
         } catch(err) {
             console.log(`LOGGER (TASK CONTROLLER @UPDATE TASK): ${err.message}`);
             if(err instanceof MissingKeysInObjectError) {
