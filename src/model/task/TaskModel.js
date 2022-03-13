@@ -48,7 +48,7 @@ module.exports = {
             userID,
             taskID
         ];        
-        const tasks = this.getTaskByUserId({userID})
+        const tasks = await this.getTaskByUserId({userID})
         return tasks;
     },
 
