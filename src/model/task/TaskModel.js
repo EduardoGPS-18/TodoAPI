@@ -1,4 +1,5 @@
 const { client } = require("../../db/connection/connection");
+const { TaskView } = require("../../view/task/TaskView");
 const { ModelErrorsFactory } = require("../errors/errors");
 const { daysFromMilliseconds } = require('../helpers/getDaysFromMilliseconds');
 
@@ -61,6 +62,6 @@ module.exports = {
         if(!task) {
             ModelErrorsFactory.inexistentDataError('Não existe esta tarefa!');
         }
-        return task;
+        return TaskView(task);
     },
 }
