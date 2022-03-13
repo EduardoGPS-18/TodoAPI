@@ -14,7 +14,7 @@ module.exports = {
     },
 
     async getTaskByUserId({userID}) {
-        const sql = `SELECT * FROM ${taskTable} WHERE user_id = $1 ORDER BY end_date ASC;`;
+        const sql = `SELECT * FROM ${taskTable} WHERE user_id = $1 ORDER BY end_date ASC, id ASC;`;
         const queryValues = [userID];
 
         const tasksData = await client.query(sql, queryValues);
