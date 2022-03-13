@@ -1,4 +1,4 @@
-const { executeHandlerController, onlyADMAlloyExecuteHandler } = require('../controllers/helpers/methods/ExecuteHandlerController');
+const { executeHandlerController } = require('../controllers/helpers/methods/ExecuteHandlerController');
 const UserController = require('../controllers/user/UserController');
 
 module.exports = (app) => {

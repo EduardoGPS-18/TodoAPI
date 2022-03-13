@@ -21,5 +21,5 @@ setTaskRoutes(app);
 
 PGConnection.connect().then(() => {
     const port = process.env.PORT || 3000;
-    app.listen(port, () => console.log(`Server rodando na porta ${port}`));
+    app.listen(port, () => console.log(`Server running on port ${port}`));
 });
