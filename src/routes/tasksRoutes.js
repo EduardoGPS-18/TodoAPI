@@ -11,7 +11,7 @@ module.exports = app => {
     app.delete('/task/:task_id', async (req, res) => {
         onlyLoggedUserAlloyExecuteHandler(req, res)((user) => TaskController.handleDeleteTask({user, ...req.params}));
     });
-    app.patch('/task/:task_id', async (req, res) => {
+    app.put('/task/:task_id', async (req, res) => {
         onlyLoggedUserAlloyExecuteHandler(req, res)((user) => TaskController.handleUpdateTaskByID({user, ...req.params, ...req.body}));
     });
 }
