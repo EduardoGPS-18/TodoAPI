@@ -4,6 +4,7 @@ const { MissingKeysInObjectError } = require('../errors/errors');
 const { ContainsKeyInObjectOrThrow } = require('../helpers/methods/ContainsKeyInObjectOrThrow');
 const { TaskView } = require("../../view/task/TaskView");
 const TaskModel = require("../../model/task/TaskModel");
+const { InfoView } = require("../../view/info/info-view");
 
 module.exports = {
     async handleCreateTask(createTaskParams) {
@@ -67,7 +68,7 @@ module.exports = {
         try{
             const { user, task_id } = getTaskByIDParams;
             const task = await TaskModel.getTaskById({userID: user.id, taskID: task_id});
-            return task;
+            return TaskView(task);
         } catch(err) {
             console.log(`LOGGER (TASK CONTROLLER @GET TASK BY ID): ${err.message}`);
             if(err instanceof MissingKeysInObjectError) {
@@ -102,5 +103,19 @@ module.exports = {
                 throw { status: 500 };
             }
         }
-    }
+    },
+
+    async handleGetTaskInfo(getTasksInfoParams) {
+        try{
+            const { user } = getTasksInfoParams;
+            const info = await TaskModel.getTaskInfoByUserId({userID: user.id});
+            return InfoView(info);
+        } catch(err) {
+            if(err instanceof MissingKeysInObjectError) {
+                throw { status: 400, error: err.message };
+            } else {
+                throw { status: 500 };
+            }
+        }
+    },
 }

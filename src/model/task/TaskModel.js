@@ -62,6 +62,19 @@ module.exports = {
         if(!task) {
             ModelErrorsFactory.inexistentDataError('Não existe esta tarefa!');
         }
-        return TaskView(task);
+        return task;
     },
+    
+    async getTaskInfoByUserId({userID}) {
+        const inclompletedQuery = `SELECT COUNT(*) FROM ${taskTable} WHERE user_id = $1;`;
+        const completedQuery = `SELECT COUNT(*) FROM ${taskTable} WHERE user_id = $1 AND completed = TRUE;`;
+        const queryValues = [userID];
+        const completedTasks = (await client.query(inclompletedQuery, queryValues)).rows[0].count;
+        const totalTasks = (await client.query(completedQuery, queryValues)).rows[0].count;
+        
+        return {
+            completedTasks,
+            totalTasks
+        }
+    }
 }

@@ -8,6 +8,9 @@ module.exports = app => {
     app.get('/task/:task_id', async (req, res) => {
         onlyLoggedUserAlloyExecuteHandler(req, res)((user) => TaskController.handleGetTaskByID({user, ...req.params}));
     });
+    app.get('/info', async (req, res) => {
+        onlyLoggedUserAlloyExecuteHandler(req, res)((user) => TaskController.handleGetTaskInfo({user}));
+    });
     app.post('/task', async (req, res) => {
         onlyLoggedUserAlloyExecuteHandler(req, res)((user) => TaskController.handleCreateTask({user, ...req.body}));
     });
