@@ -50,8 +50,8 @@ module.exports = {
             taskID
         ];
         client.query(sql, queryValues)
-        const tasks = await this.getTaskByUserId({userID})
-        return tasks;
+        const task = await this.getTaskById({userID, taskID})
+        return task;
     },
 
     async getTaskById({userID, taskID}){
