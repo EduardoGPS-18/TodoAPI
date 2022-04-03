@@ -86,13 +86,13 @@ module.exports = {
             ContainsKeyInObjectOrThrow(updateTaskByIDParams, ['task_id']);
             const { user, task_id } = updateTaskByIDParams;
             const { title, subtitle, end_date, description, completed } = updateTaskByIDParams;
-            const tasks = await TaskModel.updateTask({
+            const task = await TaskModel.updateTask({
                 userID: user.id,
                 taskID: task_id,
                 endDate: end_date,
                 title, subtitle, description, completed
             });
-            return tasks.tasks.map((task) => TaskView(task));
+            return TaskView(task);
         } catch(err) {
             console.log(`LOGGER (TASK CONTROLLER @UPDATE TASK): ${err.message}`);
             if(err instanceof MissingKeysInObjectError) {
