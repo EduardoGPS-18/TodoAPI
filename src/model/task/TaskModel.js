@@ -49,7 +49,8 @@ module.exports = {
             userID,
             taskID
         ];
-        const updatedTask = await client.query(sql, queryValues)
+        await client.query(sql, queryValues)
+        const updatedTask = await this.getTaskById({userID, taskID});
         return updatedTask;
     },
 
