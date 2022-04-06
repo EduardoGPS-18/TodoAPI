@@ -1,5 +1,5 @@
-const { onlyLoggedUserAlloyExecuteHandler } = require('../controllers/helpers/methods/ExecuteHandlerController');
-const TaskController = require("../controllers/tasks/TaskController");
+const { onlyLoggedUserAlloyExecuteHandler } = require('../helpers/methods/ExecuteHandlerController');
+const TaskController = require("../tasks/TaskController");
 
 module.exports = app => {
     app.get('/tasks', async (req, res) => {

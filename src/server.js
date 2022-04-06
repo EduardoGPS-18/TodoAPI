@@ -4,8 +4,8 @@ const cors = require('cors');
 dotenv.config();
 
 const PGConnection = require('./db/connection/connection');
-const setUserRoutes = require('./routes/userRoutes');
-const setTaskRoutes = require('./routes/tasksRoutes');
+const setUserRoutes = require('./controllers/routes/userRoutes');
+const setTaskRoutes = require('./controllers/routes/tasksRoutes');
 
 const app = express();
 

@@ -1,5 +1,5 @@
-const { executeHandlerController } = require('../controllers/helpers/methods/ExecuteHandlerController');
-const UserController = require('../controllers/user/UserController');
+const { executeHandlerController } = require('../helpers/methods/ExecuteHandlerController');
+const UserController = require('../user/UserController');
 
 module.exports = (app) => {
     app.post('/user/register', async (req, res) => {
