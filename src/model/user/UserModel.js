@@ -1,4 +1,4 @@
-const { client, salts } = require("../../db/connection/connection");
+const { client, salts } = require("../db/connection/connection");
 const { ModelErrorsFactory } = require('../errors/errors');
 const { daysFromMilliseconds } = require('../helpers/getDaysFromMilliseconds');
 

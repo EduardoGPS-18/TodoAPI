@@ -1,5 +1,4 @@
-const { client } = require("../../db/connection/connection");
-const { TaskView } = require("../../view/task/TaskView");
+const { client } = require("../db/connection/connection");
 const { ModelErrorsFactory } = require("../errors/errors");
 const { daysFromMilliseconds } = require('../helpers/getDaysFromMilliseconds');
 

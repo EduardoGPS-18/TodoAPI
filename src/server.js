@@ -3,7 +3,7 @@ const dotenv = require('dotenv');
 const cors = require('cors');
 dotenv.config();
 
-const PGConnection = require('./db/connection/connection');
+const PGConnection = require('./model/db/connection/connection');
 const setUserRoutes = require('./controllers/routes/userRoutes');
 const setTaskRoutes = require('./controllers/routes/tasksRoutes');
 
